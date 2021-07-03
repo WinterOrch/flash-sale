@@ -19,6 +19,8 @@ public class FlashSaleUser {
     private String password;
     private String salt;
 
+    private String avatar;
+
     private Date registerDate;
     private Date lastLoginDate;
     private Integer loginCount;

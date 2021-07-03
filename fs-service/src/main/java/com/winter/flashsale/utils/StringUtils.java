@@ -17,4 +17,20 @@ public class StringUtils {
             return JSON.toJSONString(value);
         }
     }
+
+    public static <T> T string2Bean(String str, Class<T> clazz) {
+        if (str == null || str.isEmpty() || clazz == null) {
+            return null;
+        }
+
+        if (clazz == int.class || clazz == Integer.class) {
+            return (T) Integer.valueOf(str);
+        } else if (clazz == long.class || clazz == Long.class) {
+            return (T) Long.valueOf(str);
+        } else if (clazz == String.class) {
+            return (T) str;
+        } else {
+            return JSON.toJavaObject(JSON.parseObject(str), clazz);
+        }
+    }
 }

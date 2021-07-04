@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "zookeeper.address",
+      "type": "java.lang.String",
+      "description": "Address for zookeeper server."
+    },
+    {
+      "name": "zookeeper.timeout",
+      "type": "java.lang.String",
+      "description": "Description for zookeeper.timeout."
+    }
+  ] }

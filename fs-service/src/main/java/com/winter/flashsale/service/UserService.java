@@ -2,6 +2,7 @@ package com.winter.flashsale.service;
 
 import com.winter.flashsale.mq.MQSender;
 import com.winter.flashsale.mybatis.mapper.UserMapper;
+import com.winter.flashsale.redis.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,4 @@ public class UserService {
 
     private MQSender mqSender;
 
-    public boolean
 }

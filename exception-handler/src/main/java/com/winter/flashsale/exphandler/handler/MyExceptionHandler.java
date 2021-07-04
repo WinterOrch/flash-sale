@@ -36,4 +36,11 @@ public class MyExceptionHandler {
         log.error("[RedisException]: {}", exception.getMessage());
         return ApiResponse.ofException(exception);
     }
+
+    @ExceptionHandler(value = ZookeeperException.class)
+    @ResponseBody
+    public ApiResponse zkExceptionHandler(RedisException exception) {
+        log.error("[ZookeeperException]: {}", exception.getMessage());
+        return ApiResponse.ofException(exception);
+    }
 }

@@ -1,4 +1,4 @@
-package com.winter.flashsale.service;
+package com.winter.flashsale.redis;
 
 import com.winter.flashsale.exphandler.Status;
 import com.winter.flashsale.exphandler.exception.RedisException;
@@ -6,8 +6,6 @@ import com.winter.flashsale.utils.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
-
-import java.io.Serializable;
 
 @Component
 public class RedisService {
@@ -21,7 +19,7 @@ public class RedisService {
     }
 
     public boolean doesOrderAlreadyExist(long userId, long goodsId) {
-        Boolean res = longRedisTemplate.hasKey(userId + "_" + goodsId);
+        Boolean res = strRedisTemplate.hasKey(userId + "_" + goodsId);
 
         if (res == null) {
             throw new RedisException(Status.UNKNOWN_ERROR.getCode(), "Null Result");
@@ -38,5 +36,9 @@ public class RedisService {
         } else {
             return StringUtils.string2Bean(result, clazz);
         }
+    }
+
+    public void increment(String key) {
+        strRedisTemplate.opsForValue().increment(key);
     }
 }

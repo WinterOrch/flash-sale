@@ -1,4 +1,4 @@
-package com.winter.flashsale.mq;
+package com.winter.flashsale.config;
 
 import org.springframework.amqp.core.*;
 

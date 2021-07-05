@@ -8,6 +8,7 @@ import com.winter.flashsale.consts.Prefix;
 import com.winter.flashsale.mq.Sender;
 import com.winter.flashsale.redis.RedisService;
 import com.winter.flashsale.zookeeper.ZkService;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +24,16 @@ public class FlashSaleService {
 
     private final ZkService zkService;
     private final RedisService redService;
+    private final RedissonClient redissonClient;
     private final Sender sender;
 
     private final SnowFlake snowFlake;
 
-    public FlashSaleService(ZkService zkService, RedisService redisService, Sender sender,
+    public FlashSaleService(ZkService zkService, RedisService redisService, Sender sender, RedissonClient redissonClient,
                             @Value("${snowflake.dcid}") long dataCentreId, @Value("${snowflake.machineid}") long machineId) {
         this.zkService = zkService;
         this.redService = redisService;
+        this.redissonClient = redissonClient;
         this.sender = sender;
 
         this.snowFlake = new SnowFlake(dataCentreId, machineId);

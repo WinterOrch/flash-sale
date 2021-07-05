@@ -3,6 +3,7 @@ package com.winter.flashsale.mq;
 import com.winter.common.message.FlashSaleOrderMessage;
 import com.winter.common.message.QueueMessage;
 import com.winter.common.utils.StringUtils;
+import com.winter.flashsale.config.RabbitConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

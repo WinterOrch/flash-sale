@@ -41,13 +41,13 @@ public class ApiResponse {
     }
 
     /**
-     * 构造一个成功且自定义消息的API返回
+     * 构造一个自定义消息的API返回
      *
      * @param message 返回内容
      * @return ApiResponse
      */
     public static ApiResponse ofMessage(String message) {
-        return of(Status.OK.getCode(), message, null);
+        return of(Status.INFO.getCode(), message, null);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.winter.flashsale.exphandler;
 
 public enum  Status {
+    INFO(100, ""),
     OK(200, "操作成功"),
     UNKNOWN_ERROR(500, "服务器出错啦");
 

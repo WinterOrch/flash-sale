@@ -1,6 +1,6 @@
-package com.winter.flashsale.exphandler.exception;
+package com.winter.common.exception;
 
-import com.winter.flashsale.exphandler.Status;
+import com.winter.common.model.Status;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)

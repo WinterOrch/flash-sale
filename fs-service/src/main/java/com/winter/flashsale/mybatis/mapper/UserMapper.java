@@ -1,6 +1,6 @@
 package com.winter.flashsale.mybatis.mapper;
 
-import com.winter.flashsale.entity.FlashSaleUser;
+import com.winter.common.entity.FlashSaleUser;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

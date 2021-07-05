@@ -11,6 +11,7 @@
         <module name="exception-handler" />
         <module name="fs-service" />
         <module name="fs-web" />
+        <module name="fs-order_service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
       <module name="exception-handler" options="-parameters" />
       <module name="flash-sale" options="-parameters" />
       <module name="fs-common" options="-parameters" />
+      <module name="fs-order_service" options="-parameters" />
       <module name="fs-service" options="-parameters" />
       <module name="fs-web" options="-parameters" />
     </option>

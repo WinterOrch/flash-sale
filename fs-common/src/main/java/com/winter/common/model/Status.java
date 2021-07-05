@@ -1,4 +1,4 @@
-package com.winter.flashsale.exphandler;
+package com.winter.common.model;
 
 public enum  Status {
     INFO(100, ""),

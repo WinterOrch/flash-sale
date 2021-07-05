@@ -25,6 +25,14 @@ public class RedisConfig {
         return redisScript;
     }
 
+    @Bean
+    public RedisScript<Long> flashSaleIfExistScript() {
+        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("scripts/flashsale_ifexists.lua")));
+        redisScript.setResultType(Long.class);
+        return redisScript;
+    }
+
     /*Config RedisTemplate to support Serializable*/
     @Bean
     public RedisTemplate<String, Serializable> redisCacheTemplate(RedisConnectionFactory redisConnectionFactory) {

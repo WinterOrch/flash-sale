@@ -13,6 +13,7 @@
         <module>fs-common</module>
         <module>fs-web</module>
         <module>exception-handler</module>
+        <module>fs-order_service</module>
     </modules>
 
     <properties>

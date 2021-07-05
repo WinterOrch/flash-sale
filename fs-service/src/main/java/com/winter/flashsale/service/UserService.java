@@ -1,6 +1,6 @@
 package com.winter.flashsale.service;
 
-import com.winter.flashsale.mq.MQSender;
+import com.winter.flashsale.mq.Sender;
 import com.winter.flashsale.mybatis.mapper.UserMapper;
 import com.winter.flashsale.redis.RedisService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,6 @@ public class UserService {
 
     private RedisService redisService;
 
-    private MQSender mqSender;
+    private Sender sender;
 
 }

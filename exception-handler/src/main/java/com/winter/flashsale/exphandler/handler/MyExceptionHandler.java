@@ -1,7 +1,7 @@
 package com.winter.flashsale.exphandler.handler;
 
-import com.winter.flashsale.exphandler.exception.*;
-import com.winter.flashsale.exphandler.model.ApiResponse;
+import com.winter.common.exception.*;
+import com.winter.common.model.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,7 +1,7 @@
 package com.winter.flashsale.zookeeper;
 
-import com.winter.flashsale.exphandler.Status;
-import com.winter.flashsale.exphandler.exception.ZookeeperException;
+import com.winter.common.model.Status;
+import com.winter.common.exception.ZookeeperException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.ZooKeeper;
 import org.springframework.context.annotation.Bean;

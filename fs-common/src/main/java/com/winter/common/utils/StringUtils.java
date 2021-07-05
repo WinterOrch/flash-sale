@@ -1,4 +1,4 @@
-package com.winter.flashsale.utils;
+package com.winter.common.utils;
 
 import com.alibaba.fastjson.JSON;
 

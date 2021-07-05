@@ -1,4 +1,4 @@
-package com.winter.flashsale.entity;
+package com.winter.common.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

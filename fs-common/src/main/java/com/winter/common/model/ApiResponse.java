@@ -1,7 +1,6 @@
-package com.winter.flashsale.exphandler.model;
+package com.winter.common.model;
 
-import com.winter.flashsale.exphandler.Status;
-import com.winter.flashsale.exphandler.exception.AbstractException;
+import com.winter.common.exception.AbstractException;
 
 public class ApiResponse {
     private Integer code;
@@ -36,8 +35,8 @@ public class ApiResponse {
      * @param data 返回数据
      * @return ApiResponse
      */
-    public static ApiResponse ofSuccess(Object data) {
-        return ofStatus(Status.OK, data);
+    public static ApiResponse ofSuccess(String message, Object data) {
+        return of(Status.OK.getCode(), message, data);
     }
 
     /**

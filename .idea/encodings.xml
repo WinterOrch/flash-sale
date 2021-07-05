@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/exception-handler/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fs-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fs-order_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fs-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fs-web/src/main/java" charset="UTF-8" />
   </component>

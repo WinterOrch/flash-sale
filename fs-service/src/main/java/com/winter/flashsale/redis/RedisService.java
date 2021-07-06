@@ -9,7 +9,9 @@ import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisService {
@@ -19,7 +21,6 @@ public class RedisService {
     RedisScript<Long> flashSaleIfExistScript;
 
     public enum RedResponse {
-
         NOT_IN_STOCK(-1),
         ORDER_CREATED(1),
         ORDER_EXISTS(2),
@@ -78,5 +79,33 @@ public class RedisService {
         } else {
             return StringUtils.string2Bean(result, clazz);
         }
+    }
+
+    public void leftPushAll(String key, Collection<String> collection) {
+        strRedisTemplate.opsForList().leftPushAll(key, collection);
+    }
+
+    public boolean hasKey(String key) {
+        Boolean res = strRedisTemplate.hasKey(key);
+
+        if (res == null) {
+            throw new RedisException(Status.UNKNOWN_ERROR.getCode(), "Null Result");
+        } else {
+            return res;
+        }
+    }
+
+    public boolean setIfAbsent(String key, String value, long duration, TimeUnit timeUnit) {
+        Boolean res = strRedisTemplate.opsForValue().setIfAbsent(key, value, duration, timeUnit);
+
+        if (res == null) {
+            throw new RedisException(Status.UNKNOWN_ERROR.getCode(), "Null Result");
+        } else {
+            return res;
+        }
+    }
+
+    public void set(String key, String value, long duration, TimeUnit timeUnit) {
+        strRedisTemplate.opsForValue().set(key, value, duration, timeUnit);
     }
 }

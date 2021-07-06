@@ -1,5 +1,7 @@
 package com.winter.common.model;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.winter.common.exception.AbstractException;
 
 public class ApiResponse {
@@ -93,6 +95,10 @@ public class ApiResponse {
         return ofException(t, null);
     }
 
+    public boolean isSuccessful() {
+        return this.getCode().equals(Status.OK.getCode());
+    }
+
     public Integer getCode() {
         return code;
     }
@@ -111,6 +117,14 @@ public class ApiResponse {
 
     public Object getResult() {
         return result;
+    }
+
+    public <T> T getData(TypeReference<T> typeReference) {
+        if (this.result == null) {
+            return null;
+        } else {
+            return JSON.parseObject(JSON.toJSONString(this.result), typeReference);
+        }
     }
 
     public void setResult(Object result) {

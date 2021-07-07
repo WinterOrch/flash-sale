@@ -45,12 +45,11 @@ public class CouponFeignImpl implements CouponFeign {
         List<FlashSaleGoodsVO> goods = new ArrayList<>();
 
         FlashSaleGoodsVO goodsVO = new FlashSaleGoodsVO();
-        goodsVO.setFlashSaleCount(200);
+        goodsVO.setFlashSaleCount(200L);
         goodsVO.setGoodsId(1L);
         goodsVO.setFlashSaleLimit(1L);
         goodsVO.setFlashSaleSort(1);
         goodsVO.setPromotionId(666L);
-        goodsVO.setId(22L);
         goodsVO.setFlashSalePrice(998L);
         goodsVO.setPromotionSessionId(1L);
         goods.add(goodsVO);

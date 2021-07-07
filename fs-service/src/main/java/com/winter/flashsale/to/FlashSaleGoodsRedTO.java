@@ -1,15 +1,11 @@
-package com.winter.flashsale.vo;
+package com.winter.flashsale.to;
 
 import lombok.Data;
 
 
 @Data
-public class FlashSaleGoodsVO {
+public class FlashSaleGoodsRedTO {
 
-    /**
-     * 活动id
-     */
-    private Long promotionId;
     /**
      * 活动场次id
      */
@@ -29,9 +25,19 @@ public class FlashSaleGoodsVO {
     /**
      * 每人限购数量
      */
-    private Long flashSaleLimit;
+    private Long purchaseLimit;
     /**
      * 排序
      */
     private Integer flashSaleSort;
+
+    private Long startTime;
+    private Long endTime;
+
+    // 秒杀随机码
+    private String randomCode;
+
+    // TODO Goods Info VO
+    // private SkuInfoVO skuInfo;
+
 }

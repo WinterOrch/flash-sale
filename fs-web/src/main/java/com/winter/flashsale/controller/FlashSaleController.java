@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.winter.common.message.FlashSaleOrderMessage;
 import com.winter.common.model.ApiResponse;
 import com.winter.common.model.Status;
-import com.winter.flashsale.service.FlashSaleService;
+import com.winter.flashsale.service.impl.FlashSaleServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/flashsale")
 public class FlashSaleController {
 
-    private final FlashSaleService flashSaleService;
+    private final FlashSaleServiceImpl flashSaleServiceImpl;
 
-    public FlashSaleController(FlashSaleService flashSaleService) {
-        this.flashSaleService = flashSaleService;
+    public FlashSaleController(FlashSaleServiceImpl flashSaleServiceImpl) {
+        this.flashSaleServiceImpl = flashSaleServiceImpl;
     }
 
-    @PostMapping("/flashSale/{goodsId}/{userId}")
-    public JSONObject flashSale(@PathVariable("goodsId") Long goodsId,
-                                @PathVariable("userId") Long userId) {
-        String strGoodsId = "" + goodsId;
-        String strUserId = "" + userId;
-
-        ApiResponse result = flashSaleService.doFlashSale(strGoodsId, strUserId);
+    @PostMapping("/flashSale/{sessionId}/{goodsId}/{ramdom}/{userId}/{num}")
+    public JSONObject flashSale(@PathVariable("sessionId") String sessionId,
+                                @PathVariable("goodsId") String goodsId,
+                                @PathVariable("ramdom") String random,
+                                @PathVariable("userId") String userId,
+                                @PathVariable("num") Integer num) {
+        ApiResponse result = flashSaleServiceImpl.doFlashSale(sessionId, goodsId, random, userId, num);
 
         JSONObject response = new JSONObject();
         response.put("code", result.getCode());

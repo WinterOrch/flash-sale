@@ -4,6 +4,7 @@ import com.winter.flashsale.consts.Prefix;
 import com.winter.flashsale.service.FlashSaleService;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,18 +14,19 @@ import java.util.concurrent.TimeUnit;
 public class FlashSaleUploadScheduled {
 
     @Resource
-    private FlashSaleService flashSaleService;
+    private FlashSaleService flashSaleServiceImpl;
 
     @Resource
     private RedissonClient redissonClient;
 
+//    @Scheduled(cron = "*/8 * * * * ?")
     public void uploadFlashSaleInfoLatestThreeDays() {
         // Redisson Distributed Lock
         RLock lock = redissonClient.getLock(Prefix.REDISSON_UPLOAD_STOCK);
-        lock.lock(5L, TimeUnit.SECONDS);
+        lock.lock(10L, TimeUnit.SECONDS);
 
         try {
-
+            flashSaleServiceImpl.uploadFlashSaleSession();
         } finally {
             lock.unlock();
         }

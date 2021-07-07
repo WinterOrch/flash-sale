@@ -10,6 +10,7 @@ public final class Prefix {
     public static final String RED_ORDER_KEY_PREFIX = "fs:order:";
 
     public static final String RED_SESSION_KEY_PREFIX = "fs:session:";
+    public static final String RED_INFO_GOODS_KEY = "fs:goods";
 
     public static final String REDISSON_UPLOAD_STOCK = "fs:upload:lock";
 }

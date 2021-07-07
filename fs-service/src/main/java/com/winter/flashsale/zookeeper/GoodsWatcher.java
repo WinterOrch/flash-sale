@@ -3,7 +3,7 @@ package com.winter.flashsale.zookeeper;
 import com.winter.common.model.Status;
 import com.winter.common.exception.ZookeeperException;
 import com.winter.flashsale.consts.Prefix;
-import com.winter.flashsale.service.FlashSaleService;
+import com.winter.flashsale.service.impl.FlashSaleServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -57,7 +57,7 @@ public class GoodsWatcher implements Watcher, ApplicationContextAware {
 
                     // remove does nothing when specified key isn't contained in map,
                     // so no need to check if it contains the key
-                    FlashSaleService.getGoodsCache().remove(productId);
+                    FlashSaleServiceImpl.getGoodsCache().remove(productId);
                 }
             } catch (KeeperException | InterruptedException e) {
                 throw new ZookeeperException(Status.UNKNOWN_ERROR.getCode(),

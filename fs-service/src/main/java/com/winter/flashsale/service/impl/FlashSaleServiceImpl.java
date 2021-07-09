@@ -111,6 +111,7 @@ public class FlashSaleServiceImpl implements FlashSaleService {
 
                         switch (result) {
                             case STOCK_OUT:
+                                goodsCache.put(key, true);
                                 zkService.setSoldOutTrue(key);
                                 return ApiResponse.ofMessage(RESP_SOLD_OUT);
 

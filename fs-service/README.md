@@ -25,18 +25,27 @@
 2. Redis 保存所有秒杀商品 VO，以及剩余库存信息
 3. 订单信息通过 RabbitMQ 发送给消费者——订单处理模块
 
-> **Todo List**
+> ### **Todo List**
 >
-> - [x] 设置通过 ZooKeeper 同步 JVM 缓存
+> **主要功能**
+>
+> - [x] ZooKeeper 同步 JVM 缓存
 > - [x] 分离 Redis 下 VO 缓存与库存信息缓存
 > - [x] 通过 Feign 接口更新秒杀信息
-> - [x] (优化) 通过 Pipeline 优化 Redis 缓存写入
-> - [ ] (优化) 通过正在进行抢购活动表判断秒杀活动是否过期
+>
+> **优化**
+>
+> - [x] 设置 RabbitMQ 发送回调
+>
+> - [x] Pipeline 优化 Redis 缓存写入
+>
+> - [ ] 通过**正在进行抢购活动表**判断秒杀活动是否过期
+>
 > - [ ] 在 Redis TO 中加入 VO 信息
 >
-> 目前商品只有 Id ，没有 VO 信息，这一部分可以在商品 TO 实体中进行添加。
+>   目前商品只有 Id ，没有 VO 信息，这一部分可以在商品 TO 实体中进行添加。
 >
-> **缓存自动清理**
+> **缓存过期**
 >
 > - [ ] VO 缓存信息过期清理
 > - [ ] JVM 缓存过期清理
@@ -94,4 +103,20 @@
 5. **订单建立成功后，加上一个分布式 Id （通过 Twitter SnowFlake 算法生成）作为订单 Id，通过消息队列传给订单处理模块**
 
    不同服务器的订单 Id 一定不能一致，因此这里用分布式 UID 算法生成订单 Id。消息通过一个 Topic 交换机 `order-event-exchange` 通过 Topic `order.flashsale.order` 发送给订单处理队列 `stock.flashsale.order.queue` 。
+
+### RabbitMQ
+
+`fs-service` $\longrightarrow $ `order-event-exchange` $\longrightarrow$ `stock.flashsale.order.queue` $\longrightarrow$ `fs-order_service`
+
+- **MyConfirmCallback**
+
+  `publisher-confirms` 的回调函数，在 ACK 时清除重发队列中缓存消息，NACK 时直接进行重发
+
+- **MyDataRelation**
+
+  维护 Correlation UUID - FlashSaleOrderMessage 的重发队列
+
+  > RabbitMQ 防止消费者侧消息丢失的策略是 ACK/NACK 回调函数，项目相应的需要维护自己的重发列表，利用 AMQP 中 `CorrelationData` 的 `id` 找到需要重发的消息内容。
+  >
+  > 项目也开启了 `mendatory` ，用于在路由策略出现，Exchange 找不到对应 Queue 时进行回调，不过这是个 debug 信息，不需要单独建 `ReturnCallback` 。
 

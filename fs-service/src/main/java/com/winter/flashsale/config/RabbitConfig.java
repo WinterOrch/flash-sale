@@ -18,6 +18,8 @@ public class RabbitConfig {
 
     public static final String ORDER_EVENT_EXCHANGE = "order-event-exchange";
 
+    public static final String FLASHSALE_ROUTING = TOPIC_ + ORDER_KEY;
+
     /**
      * Topic
      */

@@ -7,12 +7,20 @@ public class FlashSaleOrderMessage {
 
     private Long orderId;
 
+    private String sessionId;
+
     private String userId;
 
     private String goodsId;
 
+    private Integer goodsNum;
+
     public Long getOrderId() {
         return orderId;
+    }
+
+    public String getSessionId() {
+        return sessionId;
     }
 
     public String getUserId() {
@@ -21,5 +29,9 @@ public class FlashSaleOrderMessage {
 
     public String getGoodsId() {
         return goodsId;
+    }
+
+    public Integer getGoodsNum() {
+        return goodsNum;
     }
 }

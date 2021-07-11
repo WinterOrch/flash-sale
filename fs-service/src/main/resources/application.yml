@@ -8,6 +8,10 @@ spring:
     port: 5672
     username: root
     password: root
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
 snowflake:
   dcid: 952
   machineid: 222

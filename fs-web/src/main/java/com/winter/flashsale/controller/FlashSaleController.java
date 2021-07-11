@@ -42,6 +42,8 @@ public class FlashSaleController {
                 response.put("order_id", orderMessage.getOrderId());
                 response.put("buyer_id", orderMessage.getUserId());
                 response.put("goods_id", orderMessage.getGoodsId());
+                response.put("goods_num", orderMessage.getGoodsNum());
+                response.put("session_id", orderMessage.getSessionId());
             }
         }
 

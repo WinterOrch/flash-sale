@@ -122,7 +122,8 @@ public class FlashSaleServiceImpl implements FlashSaleService {
                                 return ApiResponse.ofMessage(RESP_ORDER_EXISTS);
 
                             case ORDER_CREATED:
-                                FlashSaleOrderMessage orderMessage = new FlashSaleOrderMessage(snowFlake.nextId(), userId, goodsId);
+                                FlashSaleOrderMessage orderMessage =
+                                        new FlashSaleOrderMessage(snowFlake.nextId(), sessionId, userId, goodsId, num);
                                 sender.sendDirectFlashSaleOrder(orderMessage);
                                 return ApiResponse.ofSuccess(RESP_ORDER_CREATED, orderMessage);
 
